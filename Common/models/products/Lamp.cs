@@ -13,8 +13,8 @@ namespace Common.models.products
         public int Length { get; set; }
         public int Width { get; set; }
         public Protection? Protection { get; set; }
-        public int? LowTemperature { get; set; }
-        public int? HighTemperature { get; set; }
+        public int LowTemperature { get; set; }
+        public int HighTemperature { get; set; }
     }
     
     

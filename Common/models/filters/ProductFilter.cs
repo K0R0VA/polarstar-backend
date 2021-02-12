@@ -1,23 +1,19 @@
-﻿using System;
-using System.Diagnostics;
-using Common.models.products;
-using Utils;
+﻿using Common.models.products;
 
 namespace Common.models.filters
 {
     public record ProductFilter : IFilterable<Product> {
         private string Name { get; set; }
-        private double LowPrice { get; set; } 
-        private double HighPrice { get; set; }
+        private Range<double> PriceRange { get; set; }
         private uint MinQuantity { get; set; }
-        private DateTime DatePrice { get; set; }
-        
-        public bool Filter(Product product)
+
+        public bool Filter(Product value)
         {
-            return IsNameEqual(product.Name) && IsPriceInRange(product.Price) && IsBiggerThanMinQuantity(product.Quantity)
+            return IsNameEqual(value.Name) && IsPriceInRange(value.Price) &&
+                   IsBiggerThanMinQuantity(value.Quantity);
         }
         private bool IsNameEqual(string name) => name.Contains(Name) || Name.Contains(name);
-        private bool IsPriceInRange(double price) => LowPrice < price && price < HighPrice;
-        private bool IsBiggerThanMinQuantity(uint quantity) => quantity > MinQuantity;
+        private bool IsPriceInRange(double price) => PriceRange.Filter(price);
+        private bool IsBiggerThanMinQuantity(uint quantity) => quantity >= MinQuantity;
     }
 }

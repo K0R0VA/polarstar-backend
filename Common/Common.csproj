@@ -16,10 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="filters" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Utils\Utils.csproj" />
     </ItemGroup>
 
