@@ -1,4 +1,6 @@
-﻿using Core.entities.order;
+﻿using System.Reflection;
+using Application.common.configurations;
+using Core.entities.order;
 using Core.entities.products;
 using Core.entities.TechnicalProperties;
 using Core.entities;
@@ -21,11 +23,15 @@ namespace Application.common.persistence
         public DbSet<CartLine> CartLines { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<CompanyOrder> CompanyOrders { get; set; }
-        // public DbSet<Message> Messages { get; set; }
         public DbSet<Organisation> Organisations { get; set; }
         public DbSet<TransportService> TransportServices { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new CartLineConfiguration());
+            base.OnModelCreating(builder);
         }
     }
 }

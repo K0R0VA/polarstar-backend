@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Core.entities.order;
 
 namespace Core.entities.products
 {
@@ -11,5 +13,7 @@ namespace Core.entities.products
         public float Price { get; set; }
         public int Quantity { get; set; }
         public DateTime DatePrice { get; set; }
+        
+        public ICollection<CartLine> CartLines { get; set; }
     }
 }

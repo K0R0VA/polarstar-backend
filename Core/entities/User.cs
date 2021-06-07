@@ -10,7 +10,5 @@ namespace Core.entities
         public string Surname { get; set; }
 
         public ICollection<Order> Orders { get; set; }
-        // public ICollection<Message> SendedMessages { get; set; }
-        // public ICollection<Message> ReceivedMessages { get; set; }
     }
 }
