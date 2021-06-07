@@ -4,7 +4,7 @@ namespace Core.entities.order
 {
     public class CartLine
     {
-        public uint Id { get; set; }
+        public int ProductId { get; set; }
         public Product Product { get; set; }
         public uint Quantity { get; set; }
         

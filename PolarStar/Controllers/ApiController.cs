@@ -6,7 +6,7 @@ namespace PolarStar.Controllers
     [ApiController]
     public class ApiController: ControllerBase
     {
-        private readonly IMediator _mediator;
+        protected readonly IMediator _mediator;
 
         public ApiController(IMediator mediator)
         {

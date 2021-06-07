@@ -35,12 +35,12 @@ namespace Auth.Controllers
                 Email = signUpDto.Email, 
                 UserName = signUpDto.Email,
                 PhoneNumber = signUpDto.Phone,
-                FirstName = signUpDto.FirstName,
-                Surname = signUpDto.LastName,
+                FirstName = signUpDto.Name,
+                Surname = signUpDto.Surname,
             };
             var result = await _userManager.CreateAsync(user, signUpDto.Password);
             if (!result.Succeeded) return BadRequest();
-            HttpContext.Response.Cookies.Append("auth", GenerateJwt(signUpDto.Email));
+            HttpContext.Response.Cookies.Append("PolarStar.Auth", GenerateJwt(signUpDto.Email));
             return NoContent();
         }
         
@@ -51,7 +51,7 @@ namespace Auth.Controllers
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, loginDto.Password, true);
             if (!result.Succeeded) return BadRequest();
-            HttpContext.Response.Cookies.Append("auth", GenerateJwt(loginDto.Email));
+            HttpContext.Response.Cookies.Append("PolarStar.Auth", GenerateJwt(loginDto.Email));
             return NoContent();
         }
 

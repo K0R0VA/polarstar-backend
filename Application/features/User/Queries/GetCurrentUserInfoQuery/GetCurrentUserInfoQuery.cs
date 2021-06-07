@@ -26,7 +26,11 @@ namespace Application.features.User.Queries.GetCurrentUserInfoQuery
                 .Where(user => user.Id == _userService.Id)
                 .Select(user => new CurrentUserDto
                 {
-                    
+                    Id = user.Id  ,
+                    Name = user.FirstName,
+                    Surname = user.Surname,
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
                 }).SingleOrDefaultAsync(cancellationToken);
         }
     }

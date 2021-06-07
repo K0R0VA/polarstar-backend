@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Security.Claims;
 using Application.common.persistence;
 using Application.common.services;
 using Auth.Common;
@@ -24,7 +23,7 @@ namespace PolarStar
         }
 
         public IConfiguration Configuration { get; }
-
+ 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -32,8 +31,8 @@ namespace PolarStar
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(connectionString));
-            // services.AddTransient<ICurrentUserService>(provider =>
-            //     provider.GetService<IHttpContextAccessor>().HttpContext.User)
+            services.AddHttpContextAccessor();
+            services.AddTransient<ICurrentUserService, CurrentUserService>();
             services.AddLogging();
             {
                 var authOptions = Configuration

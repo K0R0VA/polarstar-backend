@@ -5,10 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="features\Cart\Commands" />
       <Folder Include="features\Cart\Queries" />
       <Folder Include="features\Product\Commands" />
-      <Folder Include="features\Product\Queries" />
       <Folder Include="features\User\Commands" />
     </ItemGroup>
 
